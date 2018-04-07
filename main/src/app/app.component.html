@@ -1,0 +1,25 @@
+<td-layout #layout
+            [class]="activeTheme"
+            [dir]="dir">
+  <td-navigation-drawer sidenavTitle="Covalent" logo="assets:teradata" navigationRoute="/" flex color="primary">
+    <mat-nav-list flex>
+      <a mat-list-item
+          tdLayoutClose
+          [routerLink]="['/']"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon matListIcon>home</mat-icon>
+          Home
+      </a>
+      <a *ngFor="let item of routes" 
+          mat-list-item
+           tdLayoutClose
+          [routerLink]="[item.route]"
+          [routerLinkActive]="['active']">
+          <mat-icon matListIcon>{{item.icon}}</mat-icon>
+          {{item.title}}
+      </a>
+    </mat-nav-list>
+  </td-navigation-drawer>
+  <router-outlet></router-outlet>
+</td-layout>
